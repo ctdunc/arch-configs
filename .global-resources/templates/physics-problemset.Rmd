@@ -1,0 +1,12 @@
+---
+author: Connor Duncan
+title: Problemset <++>
+subtitle: Physics <++>
+date: \today
+header-includes:
+- \usepackage{physics}
+- \usepackage{mathtools}\mathtoolsset{showonlyrefs}
+- \usepackage{tikz}
+---
+
+# <++>

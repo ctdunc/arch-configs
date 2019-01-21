@@ -1,0 +1,3 @@
+bibliography="~/Dropbox/school/resources/general-bibliography.bib"
+sed 's/\{/\l/' -r |sed 's/,/\l/' |dmenu -i
+grep -E '\{(.*?),' $bibliography -o 

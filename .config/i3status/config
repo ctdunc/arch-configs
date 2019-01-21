@@ -1,0 +1,32 @@
+general{
+	output_format = "i3bar"
+	colors=true
+	interval = 10
+	}
+order += "wireless wlp3s0"
+order += "battery 0"
+order += "tztime local"
+ 
+wireless wlp3s0{
+	format_up = "%quality on %essid"
+	format_down = "down"
+	}
+cpu_temperature 0 {
+        format = "T: %degrees °C"
+        path = "/sys/devices/platform/coretemp.0/temp1_input"
+}
+tztime local{
+	format = "%Y-%m-%d %H:%M"
+	}
+battery 0 {
+        format = "%status %percentage %remaining"
+        format_down = "No battery"
+        status_chr = "^"
+        status_bat = "v"
+        status_unk = "?"
+        status_full = "f"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 20
+	last_full_capacity=true
+}
+

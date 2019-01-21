@@ -1,0 +1,2 @@
+$option=(ls --color=never | awk 'NR>1 {print $NF}' | dmenu)
+$option

@@ -1,0 +1,9 @@
+declare -a speeches=("1AC" "1NC" "2AC" "Block" "1AR" "2NR" "2AR")
+
+mkdir -m 777 "$1"
+
+for i in "${speeches[@]}"
+do
+touch "$1/$i"
+done
+vim -O "$1/${speeches[@]}"

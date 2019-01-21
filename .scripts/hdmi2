@@ -1,0 +1,14 @@
+xrandr --output eDP-1 --rotate inverted
+xrandr --auto
+xrandr --output eDP-1 --right-of HDMI-2
+
+killall -q polybar
+
+while pgrep -x polybar >/dev/null; do sleep 1; done
+
+polybar example &
+
+feh --bg-scale $DESKTOP_BACKGROUND
+
+i3-msg workspace 1; i3-msg move workspace to HDMI-2
+

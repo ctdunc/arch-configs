@@ -1,0 +1,2 @@
+choice=$(ls --color=never ~/.scripts/resources/templates | awk '{print $NF}' | dmenu -l 10 -fn "Ubuntu Mono-12")||exit
+cat ~/.scripts/resources/templates/$choice

@@ -1,0 +1,4 @@
+"xvkbd -text "\[F9]""
+	m:0x0 + b:9
+"xvkbd -text  "\[F11]""
+	m:0x0 + b:8
