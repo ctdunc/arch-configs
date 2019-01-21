@@ -11,15 +11,17 @@ Plugin 'vim-pandoc/vim-rmarkdown'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
-Plugin 'neomake/neomake'
 Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'neomake/neomake'
 call vundle#end()
 
 filetype plugin indent on
 
 "set defaults
 set splitright
+
+call neomake#configure#automake('w')
 
 "allow backspacing over autoindent, line breaks, and start of insert action
 set backspace=indent,eol,start
@@ -28,6 +30,7 @@ set autoindent
 
 set colorcolumn=80
 "stop certain movements from going to first character of line.
+"
 set nostartofline
 
 "display cursor position on the last line of screen or in status line
@@ -66,17 +69,23 @@ inoremap <Space><Tab> <Esc>/<++><Enter>"_c4l
 vnoremap <Space><Tab> <Esc>/<++><Enter>"_c4l
 map <Space><Tab> <Esc>/<++><Enter>"_c4l
 
+"skip to errors
+nnoremap  <Tab> :lnext<cr>
+nnoremap <S-Tab> :lprev<cr>
+
 "General Remappings
+"disable arrow keys, so that I am not weak
 noremap <Up>  <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
+
 noremap <F12> :vsplit ~/.vimrc<CR>
 noremap <F2> :vsplit ~/Dropbox/school/resources/general-bibliography.bib
 
 
 "LATEX Shortcuts	
-	autocmd FileType plaintex,tex nnoremap ,r :!pdflatex %<cr>
+	autocmd FileType plaintex,tex nnoremap `r :!pdflatex %<cr>
 	autocmd FileType plaintex,tex inoremap \align \begin{align}<Enter><Enter>\end{align}<Enter><++><Esc>2kA
 	autocmd FileType plaintex,tex inoremap \equation \begin{equation}<Enter><Enter>\end{equation}<Enter><++><Esc>2kA
 	autocmd FileType plaintex,tex inoremap \bold \textbf{}<++><Esc>4hi
@@ -84,6 +93,11 @@ noremap <F2> :vsplit ~/Dropbox/school/resources/general-bibliography.bib
 	autocmd FileType plaintex,tex inoremap \bib \bibliography{/home/connor/Dropbox/school/resources/general-bibliography.bib}
 	autocmd FileType plaintex,tex nnoremap `n :read !vimtemplate<CR> ggdd
 	autocmd FileType plaintex,tex inoremap \itemize \begin{itemize}<Enter><Tab>\item<Space><Enter>\end{itemize}<Enter><++><Esc>2kA
+
+	"physics stuff that's useful
+	autocmd FileType plaintex,tex inoremap \epn \epsilon_0
+	autocmd FileType plaintex,tex inoremap \bfield \vec{B}
+	autocmd FileType plaintex,tex inoremap \efield \vec{E}
 
 "Python Shortcuts
 	autocmd FileType python nnoremap `r :!python %<cr>
@@ -105,8 +119,13 @@ noremap <F2> :vsplit ~/Dropbox/school/resources/general-bibliography.bib
 	autocmd FileType rmarkdown inoremap \braket \bra{}\ket{<++>}<++><Esc>14hi
 
 "Rmarkdown+LaTeX shortcuts
-	autocmd Filetype rmarkdown,plaintex,tex inoremap \frac \frac{}{<++>}<++><Esc>10hi
-	autocmd Filetype rmarkdown,plaintex,tex nnoremap `o :!zathura <C-R>=expand("%:t:r")<cr>.pdf &<cr>
-	autocmd Filetype rmarkdown,plaintex,tex inoremap \tikz \begin{center}<Enter>\begin{tikzpicture}<Enter><Enter>\end{tikzpicture}<Enter>\end{center}<Enter><++><Esc>3ki
-syntax on
+	autocmd FileType rmarkdown,plaintex,tex inoremap \frac \frac{}{<++>}<++><Esc>10hi
+	autocmd FileType rmarkdown,plaintex,tex nnoremap `o :!zathura <C-R>=expand("%:t:r")<cr>.pdf &<cr>
+	autocmd FileType rmarkdown,plaintex,tex inoremap \tikz \begin{center}<Enter>\begin{tikzpicture}<Enter><Enter>\end{tikzpicture}<Enter>\end{center}<Enter><++><Esc>3ki
 
+"Linting/Correction Shortcuts
+	autocmd FileType javascript nnoremap + :w<cr>:!eslint '%:p' --fix<cr>
+
+
+
+syntax on

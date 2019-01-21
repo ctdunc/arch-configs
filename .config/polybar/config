@@ -297,14 +297,16 @@ battery = BAT0
 adapter = ADP1
 full-at = 98
 
+format-charging-prefix = "^"
 format-charging = <label-charging>
 format-charging-underline = ${colors.green}
 
+format-discharging-prefix = "v"
 format-discharging = <label-discharging>
 format-discharging-underline = ${colors.alert}
 
 format-full-prefix = "f "
-format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-prefix-foreground = ${colors.foreground}
 format-full-underline = ${self.format-charging-underline}
 
 [module/temperature]
