@@ -55,6 +55,7 @@ let g:lightline = {
 
 " clean tex build files on close.
 autocmd VimLeave *.tex !texclear %
+autocmd BufWritePost *.tex !latexmk -pdf % 
 
 "character and word counts mapped to F-5
 map <F5> :!wc <C-R>%<CR>
