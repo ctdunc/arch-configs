@@ -28,7 +28,6 @@ set backspace=indent,eol,start
 
 set autoindent
 
-set colorcolumn=80
 "stop certain movements from going to first character of line.
 "
 set nostartofline
@@ -100,7 +99,8 @@ noremap <F2> :vsplit ~/Dropbox/school/resources/general-bibliography.bib
 	autocmd FileType plaintex,tex inoremap \bfield \vec{B}
 	autocmd FileType plaintex,tex inoremap \efield \vec{E}
 
-"Python Shortcuts
+"Python Shortcuts/Setup
+	autocmd FileType python set colorcolumn=80
 	autocmd FileType python nnoremap `r :!python %<cr>
 	autocmd FileType python inoremap `np import numpy as np
 	autocmd FileType python inoremap `plt import matplotlib.pyplot as plt
