@@ -64,6 +64,7 @@ map <F6> :setlocal spell! spelllang=en_us<CR>
 
 "open nerdtree on ctrl-n
 nnoremap <C-n> :NERDTreeToggle<CR>
+
 "navigation with guides
 inoremap <Space><Tab> <Esc>/<++><Enter>"_c4l
 vnoremap <Space><Tab> <Esc>/<++><Enter>"_c4l
