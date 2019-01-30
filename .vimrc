@@ -124,6 +124,7 @@ noremap <F2> :vsplit ~/Dropbox/school/resources/general-bibliography.bib
 	autocmd FileType rmarkdown,plaintex,tex inoremap \frac \frac{}{<++>}<++><Esc>10hi
 	autocmd FileType rmarkdown,plaintex,tex nnoremap `o :!zathura <C-R>=expand("%:t:r")<cr>.pdf &<cr>
 	autocmd FileType rmarkdown,plaintex,tex inoremap \tikz \begin{center}<Enter>\begin{tikzpicture}<Enter><Enter>\end{tikzpicture}<Enter>\end{center}<Enter><++><Esc>3ki
+	autocmd FileType rmarkdown,plaintex,tex inoremap \braket \bra{}\ket{<++>}<++><Esc>14hi
 
 "Linting/Correction Shortcuts
 	autocmd FileType javascript nnoremap + :w<cr>:!eslint '%:p' --fix<cr>
